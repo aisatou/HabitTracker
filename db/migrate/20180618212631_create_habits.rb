@@ -3,7 +3,6 @@ class CreateHabits < ActiveRecord::Migration[5.2]
     create_table :habits do |t|
       t.string :name
       t.text :description
-      t.integer :category_id
 
       t.timestamps
     end
