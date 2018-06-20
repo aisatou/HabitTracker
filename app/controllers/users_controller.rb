@@ -4,9 +4,29 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.new
+    if @user.valid?
+    #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
+    @user.save
+    #redirect to @user show page
+    else
+    #show error
+    #redirect to new page
+  end
+
+  def edit
+    #render edit page
+  end
+
+  def update
+   user = User.find(params[:id])
+   user.update(user_params)
+   redirect_to user_path(user)
+   # 
   end
 
   private
