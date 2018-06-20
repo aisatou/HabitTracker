@@ -37,8 +37,9 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule = Schedule.find(params[:id])
+    user = @schedule.user_id
     @schedule.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(user)
     #what should this render?
   end
 
