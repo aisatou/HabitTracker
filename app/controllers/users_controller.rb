@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def create
      @user = User.new
      if @user.valid?
-       byebug
     # #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
       @user.save
     # #redirect to @user show page

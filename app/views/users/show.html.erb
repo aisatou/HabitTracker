@@ -1,3 +1,8 @@
-<h1>User Profile</h1>
-<h2></h2>
-<!-- schedule in the middle? -->
+<h1><%= @user.name %></h1>
+
+<h2> Habit Schedules </h2>
+<ul>
+  <% @user.schedules.each do |schedule| %>
+    <li><%= link_to schedule.habit.name, schedule_path(schedule) %></li>
+  <% end %>
+</ul>

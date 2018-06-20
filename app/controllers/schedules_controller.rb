@@ -16,9 +16,15 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    byebug
+    # byebug
     @schedule = Schedule.find(params[:id])
   end
+
+  def edit
+      @schedule = Schedule.find(params[:id])
+      @users = User.all
+      @habits = Habit.all
+    end
 
   def update
     @schedule = Schedule.find(params[:id])
@@ -29,9 +35,10 @@ class SchedulesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
+    redirect_to user_path(@user)
     #what should this render?
   end
 

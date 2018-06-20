@@ -1,0 +1,12 @@
+<h2><%= @schedule.habit.name %></h2>
+<b>Scheduled Time:</b> <%= @schedule.time %>
+<br>
+<b>How Often:</b> <%= @schedule.frequency %>
+<br>
+<b>Start Date:</b> <%= @schedule.start_date %>
+<br>
+<b>End Date:</b> <%= @schedule.end_date %>
+<br>
+<%= link_to "Edit Habit", edit_schedule_path(@schedule.id) %>
+<br>
+<%= button_to "Delete Habit", @habit, method: :delete %>
