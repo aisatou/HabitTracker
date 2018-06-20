@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_06_18_215117) do
     t.integer "user_id"
     t.integer "habit_id"
     t.string "frequency"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
