@@ -25,13 +25,13 @@ class HabitsController < ApplicationController
 
   def edit
       @habit = Habit.find(params[:id])
-    end
+  end
 
-    def update
+  def update
       @habit = Habit.find(params[:id])
       @habit.update(habit_params)
       redirect_to habit_path(@habit)
-    end
+  end
 
   # matt was saying that through our relationship this might cause the habit to change for other users, so being able to edit from schedule would keep it from changing for other users
   # def update
