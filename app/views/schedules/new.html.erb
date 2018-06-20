@@ -1,6 +1,16 @@
 <%= form_for @schedule do |f| %>
-  <%= f.label "Select a Habit" %> 
-  <%= f.collection_select :habit_id, @habits, :id, :name %>
-  <%= f.text_field :field %>
+  <%= f.label "Select a Habit" %>
+  <%= f.collection_select :habit_id, @habits, :id, :name  %>
+  <%= f.label "Select a User" %>
+  <%= f.collection_select :user_id, @users, :id, :name  %>
+  <%= f.label :time %>
+  <%= f.number_field (:time) %>
+  <%= f.label :frequency %>
+  <%= f.text_field (:frequency) %>
+  <%= f.label :start_date %>
+  <%= date_field(:schedule, :start_date) %>
+  <%= f.label :end_date %>
+  <%= date_field(:schedule, :end_date) %>
+  <%= f.submit %>
 
 <% end %>
