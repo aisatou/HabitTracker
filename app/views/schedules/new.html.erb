@@ -1,0 +1,6 @@
+<%= form_for @schedule do |f| %>
+  <%= f.label "Select a Habit" %> 
+  <%= f.collection_select :habit_id, @habits, :id, :name %>
+  <%= f.text_field :field %>
+
+<% end %>

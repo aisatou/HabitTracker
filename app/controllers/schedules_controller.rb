@@ -1,6 +1,7 @@
 class ScheduleController < ApplicationController
   def new
     @schedule = Schedule.new
+    @habits = Habit.all
   end
 
   def create
