@@ -8,14 +8,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    if @user.valid?
-    #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
-    @user.save
-    #redirect to @user show page
-    else
-    #show error
-    #redirect to new page
+     @user = User.new
+     if @user.valid?
+       byebug
+    # #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
+      @user.save
+    # #redirect to @user show page
+      redirect_to user_path(@user)
+     else
+    # #show error
+      render :new
+    # #redirect to new page
+    end
   end
 
   def edit
@@ -26,7 +30,7 @@ class UsersController < ApplicationController
    user = User.find(params[:id])
    user.update(user_params)
    redirect_to user_path(user)
-   # 
+   #
   end
 
   private
