@@ -6,13 +6,13 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.create(schedule_params)
-    redirect_to(@schedule)
-    # #if @schedule.valid?
-    # @schedule.save
-    # else
-    # render :new
-    # end
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.valid?
+      @schedule.save
+      redirect_to(@schedule)
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,6 +26,7 @@ class SchedulesController < ApplicationController
       @schedule = Schedule.find(params[:id])
       @users = User.all
       @habits = Habit.all
+      render :edit
     end
 
   def update
@@ -42,14 +43,13 @@ class SchedulesController < ApplicationController
     user = @schedule.user_id
     @schedule.destroy
     redirect_to user_path(user)
-    #what should this render?
   end
 
 
   private
     def schedule_params
       # params.require(:schedule).permit(:user_id, :habit_id)
-      params.require(:schedule).permit(:habit_id, :user_id, :frequency, :time, :start_date, :end_dates)
+      params.require(:schedule).permit(:habit_id, :user_id, :frequency, :time, :start_date, :end_date)
     end
 
 end

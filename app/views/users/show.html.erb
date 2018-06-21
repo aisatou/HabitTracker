@@ -1,8 +1,15 @@
-<h1><%= @user.name %></h1>
+<div class="card text-center" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Your Scheduled Habits:</h5>
+    <p class="card-text-center">
+      <ul class="list-group list-group-flush">
+        <% @user.schedules.each do |schedule| %>
+      <li class="list-group-item list-group-item-action list-group-item-primary"><%= link_to schedule.habit.name, schedule_path(schedule) %></li>
+        <% end %>
+      </ul>
+    </p>
+    <a href="" class="btn btn-primary">Schedule a New Habit</a>
+  </div>
+</div>
 
-<h2> Habit Schedules </h2>
-<ul>
-  <% @user.schedules.each do |schedule| %>
-    <li><%= link_to schedule.habit.name, schedule_path(schedule) %></li>
-  <% end %>
-</ul>
+<!-- unused button: <a href="#" class="btn btn-primary">Go somewhere</a> -->
