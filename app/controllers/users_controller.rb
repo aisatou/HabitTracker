@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
   end
@@ -8,16 +9,27 @@ class UsersController < ApplicationController
   end
 
   def create
-     @user = User.new
-     if @user.valid?
-    # #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
+    #  @user = User.new
+    #  if @user.valid?
+    # # #we can validate for uniqueness and not have to do a find or create by imo? but that's a design choice & i'm flexible
+    #   @user.save
+    # # #redirect to @user show page
+    #   redirect_to user_path(@user)
+    #  else
+    # # #show error
+    #   render :new
+    # # #redirect to new page
+    # end
+    @user = User.new(user_params)
+
+    if @user.valid?
       @user.save
-    # #redirect to @user show page
+      log_in @user
+      flash[:success] = "Welcome!"
+      # redirect_to @user
       redirect_to user_path(@user)
-     else
-    # #show error
+    else
       render :new
-    # #redirect to new page
     end
   end
 
@@ -34,7 +46,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password_digest)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
 end
