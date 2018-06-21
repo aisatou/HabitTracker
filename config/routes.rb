@@ -6,7 +6,7 @@ get  '/contact', to: 'static_pages#contact'
 get  '/signup',  to: 'users#new'
 post '/signup',  to: 'users#create'
 
-root 'application#hello'
+root 'application#welcome'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 post '/logout' => 'sessions#destroy'

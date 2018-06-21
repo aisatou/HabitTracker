@@ -16,4 +16,8 @@ end
 def logged_in?
   !!current_user
 end
+
+def welcome
+  render 'welcome'
+end
 end
