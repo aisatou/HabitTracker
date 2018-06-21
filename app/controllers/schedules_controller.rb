@@ -16,8 +16,10 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    # byebug
     @schedule = Schedule.find(params[:id])
+    user_num = @schedule.user_id
+    @user = User.find(user_num)
+    @user_schedules = @user.schedules.to_ary
   end
 
   def edit

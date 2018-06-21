@@ -1,11 +1,27 @@
 <h2><%= @schedule.habit.name %></h2>
-<b>Scheduled Time:</b> <%= @schedule.time %>
-<br>
-<b>How Often:</b> <%= @schedule.frequency %>
-<br>
-<b>Start Date:</b> <%= @schedule.start_date %>
-<br>
-<b>End Date:</b> <%= @schedule.end_date %>
-<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Scheduled Time:</th>
+      <th scope="col">How Often:</th>
+      <th scope="col">Start Date:</th>
+      <th scope="col">End Date:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_schedules.each_with_index do |s, i|  %>
+    <tr>
+      <th scope="row"><%= i + 1 %></th>
+      <td><%= @schedule.time %></td>
+      <td><%= @schedule.frequency %></td>
+      <td><%= @schedule.start_date %></td>
+      <td><%= @schedule.end_date %></td>
+      <td><%= button_to "Edit Scheduled Habit", edit_schedule_path(@schedule) %></td>
+    </tr>
+    <% end  %>
+  </tbody>
+</table>
+
 <%= button_to "Edit Habit", edit_schedule_path(@schedule.id) %>
-<%= button_to "Delete Habit", @habit, method: :delete %>
+<%= button_to "Delete Habit", @schedule, method: :delete %>
