@@ -1,19 +1,29 @@
-class SessionsController < ActionController::Base
+class SessionsController < ApplicationController
+  skip_before_action :logged_in?, only: [:create, :new]
 
   def new
-    # don't need anything in here, cause we're not setting up a
-    # blank model to couple with the form
+    # Login
+    render :new
   end
 
   def create
-    # no strong params cause there is no mass assignment
-    user = User.find_by(username: params[:username])
+    @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       redirect_to login_path
     end
+    # POST of the login
   end
 
+  def destroy
+    session.delete :user_id
+    redirect_to login_path
+  end
+
+  private
+  def user_params
+    params.permit(:email, :password)
+  end
 end

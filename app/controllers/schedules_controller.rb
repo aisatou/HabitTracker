@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authorized
+
   def new
     @schedule = Schedule.new
     @users = User.all
@@ -9,7 +11,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
     if @schedule.valid?
       @schedule.save
-      redirect_to(@schedule)
+      redirect_to schedule_path(@schedule)
     else
       render :new
     end
