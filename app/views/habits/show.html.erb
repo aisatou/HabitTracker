@@ -1,6 +1,4 @@
 <h2><%= @habit.name %></h2>
-<!-- <b>Habit To-Do:</b> <%= @habit.name %>
-<br> -->
-<b>Inspiring Reminder:</b> <%= @habit.description %>
+<p><%= @habit.description %></p>
 <br>
 <%= link_to "Edit Habit", edit_habit_path(@habit.id) %>
